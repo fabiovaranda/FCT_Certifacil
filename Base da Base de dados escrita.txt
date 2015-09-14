@@ -1,0 +1,106 @@
+Create Database "GestaoCertifacil"
+
+Create Table Condominios(
+	id int not null auto_increment primary key,
+	morada varchar(70) not null,
+	codigoPostal varchar(10) not null,
+	contribuinte int(9) not null,
+	nFracao int not null,
+	nLampadas int not null,
+	freguesia varchar(50) not null,
+	rota varchar(10) not null);
+
+Create Table TipoUtilizadores(
+	id int not null auto_increment primary key,
+	tipo varchar(15) not null);
+
+Create Table Estados(
+	id int not null auto_increment primary key,
+	estado varchar(10) not null);
+
+Create Table Utilizadores(
+	id int not null auto_increment primary key,
+	nome varchar(70) not null,
+	palavrapasse varchar(40) not null,
+	id_tipoUtilizador int not null,
+	id_estado int not null,
+	foreign Key (id_tipoUtilizador) references TipoUtilizadores (id),
+	foreign Key (id_estado) references Estados (id));
+
+Create Table Vistorias(
+	id int not null auto_increment primary key,
+	data date not null,
+	vistoria varchar(200) not null,
+	nMovimentos int not null,
+	id_condominio int not null,
+	id_utilizador int not null,
+	foreign key (id_condominio) references Condominios(id),
+	foreign key (id_utilizador) references Utilizadores(id));
+
+Create Table MovLampadas(
+	id int not null auto_increment primary key,
+	stock int not null,
+	data date not null,
+	acao varchar(20) not null,
+	numero int not null,
+	descricao varchar(100) not null,
+	id_vistoria int not null,
+	foreign key (id_vistoria) references Vistorias(id));
+
+Create Table Reunioes(
+	id int not null auto_increment primary key,
+	data date not null,
+	hora time not null,
+	local varchar(100) not null,
+	id_condominio int not null,
+	representante int not null,
+	id_utilizador int not null,
+	foreign key (id_condominio) references Condominios(id),
+	foreign key (representante) references Utilizadores(id),
+	foreign key (id_utilizador) references Utilizadores(id));
+
+Create Table Condominos(
+	id int not null auto_increment primary key,
+	nome varchar(70) not null,
+	contato int(9) not null,
+	email varchar(50) not null,
+	morada varchar(70) not null,
+	dataNascimento date not null,
+	contribuinte int(9) not null);
+
+Create Table Procuradores(
+	id int not null auto_increment primary key,
+	nome varchar(70) not null,
+	morada varchar(70) not null,
+	codigoPostal varchar(10) not null,
+	contato int(9) not null,
+	contribuinte int(9) not null,
+	dataNascimento date not null);
+
+Create Table Inquilinos(
+	id int not null auto_increment primary key,
+	nome varchar(70) not null,
+	dataNascimento date not null,
+	contato int(9) not null,
+	email varchar(50) not null,
+	contribuinte int(9) not null,
+	id_procurador int null,
+	foreign key (id_procurador) references Procuradores(id));
+
+Create Table TiposFracoes(
+	id int not null auto_increment primary key,
+	tipo varchar(15) not null);
+
+Create Table Fracoes(
+	id int not null auto_increment primary key,
+	nome varchar(10) not null,
+	piso varchar(15) not null,
+	porta varchar(10) not null,
+	id_tipofracao int not null,
+	id_condominio int not null,
+	id_condomino int not null,
+	id_inquilino int null,
+	foreign key (id_tipofracao) references TiposFracoes(id),
+	foreign key (id_condominio) references Condominios(id),
+	foreign key (id_condomino) references Condominos(id),
+	foreign key (id_inquilino) references Inquilinos(id));	

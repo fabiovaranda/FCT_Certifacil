@@ -1,0 +1,35 @@
+//Dados necessários para agora
+
+insert into TipoUtilizadores(tipo) values ('Administrador');
+insert into TipoUtilizadores(tipo) values ('Funcionario');
+
+insert into Estados(estado) values ('ativo');
+insert into Estados(estado) values ('inativo');
+
+insert into Utilizadores(nome, palavrapasse, id_tipoUtilizador, id_estado)values('angelo', '98a8d3f11b400ddc06d7343375b71a84', 1, 1);
+insert into Utilizadores(nome, palavrapasse, id_tipoUtilizador, id_estado)values('helder', '71562974cb3965dbc5102a73e6d84dd5', 1, 2);
+insert into Utilizadores(nome, palavrapasse, id_tipoUtilizador, id_estado)values('jorge', 'f92e099eaafcc2bf55681dc5187625cc', 2, 1);
+
+insert into TiposFracoes(tipo)values('Habitacional');
+insert into TiposFracoes(tipo)values('Garagem');
+insert into TiposFracoes(tipo)values('Comercial');
+
+insert into Condominios(morada, codigoPostal, contribuinte, nFracao, nLampadas, freguesia, rota) values ('rua dos peixes Emidios', '2135-654', 968574123, 3, 0, 'penalvina', 'A');
+
+insert into Vistorias(data, vistoria, nMovimentos, id_condominio, id_utilizador) values ('2015-06-12', 1,'Nada a relatar', 1, 1);
+
+insert into Reunioes(data, hora, local, id_condominio, representante, id_utilizador) values ('2014-05-20', '12:00', 'Escritório', 1, 2, 1);
+insert into Reunioes(data, hora, local, id_condominio, representante, id_utilizador) values ('2015-05-20', '12:00', 'Predio', 1, 2, 1);
+
+insert into Condominos(nome, contato, email, morada, dataNascimento, contribuinte) values ('lovePoucos', 969595955, 'love@lovinhas.come', 'rua dos peixes Emidios', '2012-02-20', 969696969);
+
+insert into Procuradores(nome, morada, codigoPostal, contato, contribuinte, dataNascimento) values ('popota', 'Avenida da potota nºXXL 2ºEsquerdo', '2532-132', 989898989, 989898987, '1654-12-25');
+
+insert into Inquilinos(nome, dataNascimento, contato, email, contribuinte, id_procurador) values ('Jaja', '1999-05-16', 939393939, 'jaja@jaja.com', 939393938, 1);
+insert into Inquilinos(nome, dataNascimento, contato, email, contribuinte, id_procurador) values ('Jojo', '1995-06-15', 969696969, 'jojo@jojo.com', 969696968, null);
+
+insert into Fracoes(nome, piso, porta, id_tipofracao, id_condominio, id_condomino, id_inquilino) values ('B', 'ResChão', 'Direita', 1, 1, 1, 1);
+insert into Fracoes(nome, piso, porta, id_tipofracao, id_condominio, id_condomino, id_inquilino) values ('C', 'ResChão', 'Frente', 1, 1, 1, null);
+
+
+insert into MovLampadas(stock, data, acao, numero, descricao, id_vistoria) values ();
